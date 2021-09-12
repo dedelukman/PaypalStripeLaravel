@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
+use App\Models\Currency;
+use App\Models\PaymentPlatform;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +21,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::post('/payments/pay', [PaymentController::class, 'pay'])->middleware(['auth'])->name('pay');
+Route::post('/payments/approval', [PaymentController::class, 'appropal'])->name('appropal');
+Route::post('/payments/cancelled', [PaymentController::class, 'cancelled'])->name('cancelled');
 
 require __DIR__.'/auth.php';
+
+
