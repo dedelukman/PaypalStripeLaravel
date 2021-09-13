@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Services\PaypalService;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -16,10 +16,18 @@ class PaymentController extends Controller
             'payment_platform' => ['required', 'exists:payment_platforms,id'],
         ]);
 
+        $paymentPlatform = resolve(PaypalService::class);
+
+        return $paymentPlatform->handlePayment($request);
+
         return $request->all();
     }
 
-    public function approval(){}
+    public function approval(){
+        $paymentPlatform = resolve(PaypalService::class);
+        return $paymentPlatform->handleApproval();
+    }
+
     public function cancelled(){}
 
 

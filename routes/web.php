@@ -25,8 +25,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::post('/payments/pay', [PaymentController::class, 'pay'])->middleware(['auth'])->name('pay');
-Route::post('/payments/approval', [PaymentController::class, 'appropal'])->name('appropal');
-Route::post('/payments/cancelled', [PaymentController::class, 'cancelled'])->name('cancelled');
+Route::get('/payments/approval', [PaymentController::class, 'approval'])->name('approval');
+Route::get('/payments/cancelled', [PaymentController::class, 'cancelled'])->name('cancelled');
 
 require __DIR__.'/auth.php';
 
