@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                    
-                    <div class="mt-5 md:mt-0 md:col-span-2">
+                    <div class="mt-1 md:mt-0 md:col-span-2">
                         <form action="{{ route('pay') }}" method="POST" id="paymentForm">
                             @csrf
                           <div class="shadow sm:rounded-md sm:overflow-hidden">
@@ -100,4 +100,6 @@
 
         </div>        
     </div>
+
+    
 </x-app-layout>

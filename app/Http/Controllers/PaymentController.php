@@ -20,7 +20,7 @@ class PaymentController extends Controller
 
         return $paymentPlatform->handlePayment($request);
 
-        return $request->all();
+        // return $request->all();
     }
 
     public function approval(){
