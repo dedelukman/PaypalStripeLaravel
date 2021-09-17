@@ -110,5 +110,7 @@ class PaypalService{
         if (in_array(strtoupper($currency), $zeroDecimalCurrencies)){
             return 1;
         }
+
+        return 100;
     }
 }
