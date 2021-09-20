@@ -74,7 +74,7 @@ class StripeService{
             '/v1/payment_intents',
             [],
             [
-                'amount' => round($value * $factor = $this->resolveFactor($currency)) / $factor,
+                'amount' => round($value * $factor = $this->resolveFactor($currency)) ,
                 'currency' => strtolower($currency),
                 'payment_method' => $paymentMethod,
                 'confirmation_method' => 'manual',
