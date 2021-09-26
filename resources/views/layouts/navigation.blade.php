@@ -11,6 +11,15 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @if (!optional(auth()->user())->hasActiveSubscription())
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('subscribe.show')" class="text-white border-blue-800 bg-blue-800 border-4 hover:bg-blue-700 hover:border-blue-700 rounded mt-3 mb-2 pb-2">
+                            {{ __('Subscribe') }}
+                        </x-nav-link>
+                
+                    </div>
+                @endif
+                
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Make Payment') }}
