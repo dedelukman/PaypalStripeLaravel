@@ -14,7 +14,7 @@
                     <div class="card-header">Complete the security steps</div>
                     <div class="card-body">
                         <p>
-                            You need to follow some steps with your bank to complete this payment. let's go!
+                        You need to follow some steps with your bank to complete this payment. let's go!
                         </p>  
                     </div>
                   </div>
@@ -33,12 +33,18 @@
         <script>
             const stripe = Stripe('{{ config('services.stripe.key') }}');
 
-            stripe.handleCardAction("{{ $clientSecret }}")
+            stripe.confirmCardPayment(
+               "{{ $clientSecret}}",
+                {payment_method: "{{ $paymentMethod }}"}
+            )
                 .then(function(result){
                     if(result.error){
-                        window.location.replace("{{ route('cancelled') }}")
+                        window.location.replace("{{ route('subscribe.cancelled') }}")
                     }else{
-                        window.location.replace("{{ route('approval') }}")
+                        window.location.replace("{!! route('subscribe.approval',[
+                            'plan' => $plan,
+                            'subscription_id' => $subscriptionId,
+                        ]) !!}")
                     }
                 });
 

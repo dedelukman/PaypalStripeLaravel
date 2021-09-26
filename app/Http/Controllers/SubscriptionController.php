@@ -48,7 +48,7 @@ class SubscriptionController extends Controller
         $request->validate($rules);
 
        
-
+       
         if (session()->has('subscriptionPlatformId')) {
             $paymentPlatform = $this->paymentPlatformResolver
                 ->resolveService(session()->get('subscriptionPlatformId'));
